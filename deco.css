@@ -193,6 +193,7 @@ body{
 .popup-info .btn-group .info-btn:nth-child(2):hover {
   background: #ffb92e; /* Hover color for the Continue button */
   border-color: #ffb92e; /* Match border on hover */
+  color: #02010ced;
 }
 
 .quiz-section{
