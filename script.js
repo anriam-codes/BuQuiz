@@ -11,6 +11,29 @@ const goHomeBtn = document.querySelector('.goHome-btn');
 const nextBtn = document.querySelector('.next-btn');
 const optionList = document.querySelector('.option-list');
 
+let selectedCategory = null;
+let questionCount = 0;
+let questionNumb = 1;
+let userScore = 0;
+
+function selectCategory(category) {
+    selectedCategory = category;
+
+    if (category === "sports") {
+        questions = sportsQuestions;
+    } else if (category === "tech") {
+        questions = techQuestions;
+    } else {
+        questions = defaultQuestions;
+    }
+
+    questionCount = 0;
+    questionNumb = 1;
+    userScore = 0;
+
+    startBtn.click();
+}
+
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
     main.classList.add('active');
@@ -59,10 +82,6 @@ goHomeBtn.onclick = () => {
     questionCounter(questionNumb);
 }
 
-let questionCount = 0;
-let questionNumb = 1;
-let userScore = 0;
-
 nextBtn.onclick = () => {
     if (questionCount < questions.length - 1) {
         questionCount++;
@@ -91,7 +110,7 @@ function showQuestions(index) {
 
     const options = document.querySelectorAll('.option');
     for (let i = 0; i < options.length; i++) {
-        options[i].setAttribute('onclick', 'optionSelected(this)');   
+        options[i].setAttribute('onclick', 'optionSelected(this)');   
     }
 }
 

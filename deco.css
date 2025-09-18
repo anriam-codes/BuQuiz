@@ -210,7 +210,6 @@ body{
     transition: .8s ease-in-out;
     transition-delay: .25s;
     z-index: 100;
-
 }
 
 .quiz-section.active{
@@ -466,4 +465,33 @@ body{
   font-size: 24px;
   font-weight: bold;
   color: #fff;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 140px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #eee;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
