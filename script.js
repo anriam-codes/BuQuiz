@@ -15,34 +15,47 @@ let selectedCategory = null;
 let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
+let questions = []; //globally initialized
 
 function selectCategory(category) {
     selectedCategory = category;
 
     if (category === "sports") {
         questions = sportsQuestions;
+        document.querySelector('.quiz-box h1').textContent = "Sportsy Quizz";
     } else if (category === "tech") {
         questions = techQuestions;
+        document.querySelector('.quiz-box h1').textContent = "Technoii Quiz";
     } else {
         questions = defaultQuestions;
+        document.querySelector('.quiz-box h1').textContent = "Quizzzu";
     }
 
     questionCount = 0;
     questionNumb = 1;
     userScore = 0;
 
-    startBtn.click();
-}
-
-startBtn.onclick = () => {
     popupInfo.classList.add('active');
     main.classList.add('active');
 }
 
+
+// IKOU! button -> load defaultQuestions
+startBtn.onclick = () => {
+    // if user already picked category, keep it
+    if (!selectedCategory) {
+        selectCategory("default");
+    } else {
+        // just open popup with previously selected category
+        popupInfo.classList.add('active');
+        main.classList.add('active');
+    }
+};
+
 exitBtn.onclick = () => {
     popupInfo.classList.remove('active');
     main.classList.remove('active');   
-}
+};
 
 continueBtn.onclick = () => {
     quizSection.classList.add('active');
@@ -53,7 +66,7 @@ continueBtn.onclick = () => {
     showQuestions(0);
     questionCounter(1);
     headerScore();
-}
+};
 
 tryAgainBtn.onclick = () => {
     quizBox.classList.add('active');
@@ -67,7 +80,7 @@ tryAgainBtn.onclick = () => {
     showQuestions(questionCount);
     questionCounter(questionNumb);
     headerScore();
-}
+};
 
 goHomeBtn.onclick = () => {
     quizSection.classList.remove('active');
@@ -80,7 +93,7 @@ goHomeBtn.onclick = () => {
 
     showQuestions(questionCount);
     questionCounter(questionNumb);
-}
+};
 
 nextBtn.onclick = () => {
     if (questionCount < questions.length - 1) {
@@ -95,7 +108,7 @@ nextBtn.onclick = () => {
     else {
         showResultBox();
     }
-}
+};
 
 function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
